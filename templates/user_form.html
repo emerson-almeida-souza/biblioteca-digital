@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% set page_title = ("Editar" if user else "Novo") + " Usuário" %}
+{% block title %}{{ page_title }} - Biblioteca Digital{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/users">Usuários</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ page_title }}</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-primary text-white">
+                    <h4 class="mb-0"><i class="bi bi-person-plus-fill"></i> {{ page_title }}</h4>
+                </div>
+                <div class="card-body">
+                    {% if success %}
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <div>{{ success }}</div>
+                        </div>
+                    {% endif %}
+                    {% if error %}
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                           <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                           <div>{{ error }}</div>
+                        </div>
+                    {% endif %}
+
+                    <form method="post" action="{{ '/users/' ~ user.id ~ '/edit' if user else '/users/new' }}" novalidate>
+                        <div class="mb-3">
+                            <label for="name" class="form-label">Nome</label>
+                            <input type="text" class="form-control" id="name" name="name" value="{{ user.name if user else '' }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="email" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="email" name="email" value="{{ user.email if user else '' }}" required>
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <a href="/users" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Voltar
+                            </a>
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-check-circle-fill"></i> Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

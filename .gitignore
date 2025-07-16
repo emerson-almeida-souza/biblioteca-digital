@@ -1,0 +1,55 @@
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Virtual environment
+venv/
+.env/
+.venv/
+ENV/
+env.bak/
+venv.bak/
+
+# FastAPI/uvicorn logs
+*.log
+
+# dotenv environment files
+.env
+.env.*
+
+# SQL database files
+*.sqlite3
+*.db
+
+# VS Code
+.vscode/
+
+# PyCharm
+.idea/
+
+# mypy / pyright / pytest / coverage
+.mypy_cache/
+.pytest_cache/
+.pyright/
+.coverage
+htmlcov/
+
+# Build files
+build/
+dist/
+*.egg-info/
+
+# macOS
+.DS_Store
+
+# Test output
+__snapshots__/
+.nox/
+.tox/
+
+# Jupyter Notebooks
+.ipy

@@ -1,0 +1,63 @@
+{% extends "base.html" %}
+
+{% set page_title = ("Editar" if book else "Novo") + " Livro" %}
+{% block title %}{{ page_title }} - Biblioteca Digital{% endblock %}
+
+{% block content %}
+<div class="container py-4">
+    <nav aria-label="breadcrumb">
+        <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="/books">Livros</a></li>
+            <li class="breadcrumb-item active" aria-current="page">{{ page_title }}</li>
+        </ol>
+    </nav>
+
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header bg-success text-white">
+                    <h4 class="mb-0"><i class="bi bi-book-fill"></i> {{ page_title }}</h4>
+                </div>
+                <div class="card-body">
+                    {% if success %}
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <i class="bi bi-check-circle-fill me-2"></i>
+                            <div>{{ success }}</div>
+                        </div>
+                    {% endif %}
+                    {% if error %}
+                        <div class="alert alert-danger d-flex align-items-center" role="alert">
+                            <i class="bi bi-exclamation-triangle-fill me-2"></i>
+                            <div>{{ error }}</div>
+                        </div>
+                    {% endif %}
+
+                    <form method="post" action="{{ '/books/' ~ book.id ~ '/edit' if book else '/books/new' }}" novalidate>
+                        <div class="mb-3">
+                            <label for="title" class="form-label">Título</label>
+                            <input type="text" class="form-control" id="title" name="title" value="{{ book.title if book else '' }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="author" class="form-label">Autor</label>
+                            <input type="text" class="form-control" id="author" name="author" value="{{ book.author if book else '' }}" required>
+                        </div>
+                        <div class="mb-3">
+                            <label for="quantity" class="form-label">Quantidade</label>
+                            <input type="number" class="form-control" id="quantity" name="quantity" value="{{ book.quantity if book else '1' }}" required min="1">
+                        </div>
+                        <hr>
+                        <div class="d-flex justify-content-between">
+                            <a href="/books" class="btn btn-secondary">
+                                <i class="bi bi-x-circle"></i> Voltar
+                            </a>
+                            <button type="submit" class="btn btn-success">
+                                <i class="bi bi-check-circle-fill"></i> Salvar
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
