@@ -62,7 +62,7 @@ O projeto inclui um frontend simples feito com FastAPI + Jinja2, que permite rea
 
 1.  **Clone o repositório:**
     ```bash
-    git clone <URL-DO-SEU-REPOSITORIO>
+    git clone https://github.com/emerson-almeida-souza/biblioteca-digital.git
     cd biblioteca-digital
     ```
 
