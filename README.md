@@ -46,7 +46,7 @@ API REST em Python para gerenciar uma biblioteca digital, permitindo o cadastro 
 *   **Multa por Atraso:** R$ 2,00 por dia de atraso.
 *   **Limite de Empréstimos:** Um usuário pode ter no máximo 3 empréstimos ativos simultaneamente.
 
-## Frontend Básico
+## Frontend
 
 O projeto inclui um frontend simples feito com FastAPI + Jinja2, que permite realizar todas as operações de CRUD para usuários, livros e empréstimos via páginas HTML.
 
